@@ -1,0 +1,30 @@
+.css-1aquho2-MuiTabs-indicator {
+    background-color: var(--orange) !important;
+    margin-bottom: 1rem;
+}
+
+.css-by5166-MuiButtonBase-root-MuiTab-root.Mui-selected {
+    color:var(--orange) !important;
+}
+.css-9xpa2d-MuiButtonBase-root-MuiTab-root.Mui-selected{
+    color:black !important;
+}
+:where(.css-dev-only-do-not-override-1uq9j6g).ant-btn .ant-btn-icon {
+    line-height: 1;
+    margin-bottom: 0px;
+}
+:where(.css-dev-only-do-not-override-1uq9j6g).ant-upload-wrapper .ant-upload-list .ant-upload-list-item .ant-upload-list-item-actions {
+    margin-bottom: 0px;
+}
+.anticon{
+    margin-bottom:0px;
+}
+.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select {
+    height: 10px;
+}
+.css-8r8lqk-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root{
+    padding-top:0px !important;
+}
+span {
+    margin-bottom: 0px !important;
+}
