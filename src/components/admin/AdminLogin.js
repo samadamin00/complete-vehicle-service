@@ -8,6 +8,7 @@ import {
   CardContent,
   FormControlLabel,
   Checkbox,
+  Alert
 } from "@mui/material";
 import { styled } from "@mui/system";
 import VisibilityIcon from "@mui/icons-material/Visibility";
@@ -56,6 +57,9 @@ export default function AdminLogin() {
   const [showPassword, setShowPassword] = useState(false);
   const [useremail, setUserEmail] = useState("");
   const [userpassword, setUserPassword] = useState("");
+  const [alertMessage, setAlertMessage] = useState('');
+  const [alertSeverity, setAlertSeverity] = useState('success');
+  const [showAlert, setShowAlert] = useState(false);
 
   const handlePasswordVisibilityToggle = () => {
     setShowPassword(!showPassword);
@@ -74,18 +78,44 @@ export default function AdminLogin() {
       );
       console.log(response.data);
       localStorage.setItem("token", response.data.token);
-
-      //const { token, isAdmin } = response.data;
-      console.log(response.data.token);
-
+      setAlertMessage('Login successful!');
+      setAlertSeverity('success');
+      setShowAlert(true);
+      setTimeout(() => {
+        setShowAlert(false);
+        homeNavigate('/');
+      }, 2000);
       homeNavigate("/admin/mechanic-requests");
       isAdminChangeHandler();
     } catch (error) {
-      // Handle error
+      setAlertMessage('Login failed. Please try again.');
+      setAlertSeverity('error');
+      setShowAlert(true);
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 2000);
+      console.log(error);
     }
   };
 
   return (
+    <>
+    {showAlert && (
+        <Alert
+          variant="filled"
+          severity={alertSeverity}
+          sx={{
+            position: 'fixed',
+            top: '50px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            zIndex: 1200,
+            margin: '20px 0',
+          }}
+        >
+          {alertMessage}
+        </Alert>
+      )}
     <Box
       sx={{
         display: "flex",
@@ -154,5 +184,6 @@ export default function AdminLogin() {
         </CardContent>
       </LoginCard>
     </Box>
+    </>
   );
 }
